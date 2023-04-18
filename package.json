@@ -3,10 +3,10 @@
   "version": "0.0.3",
   "description": "nosdav cli",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nosdav/nosdav-cli.git"
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/nosdav/nosdav-cli#readme",
   "dependencies": {
-    "nostr-tools": "^1.8.3",
+    "nostr-tools": "^1.9.0",
     "websocket-polyfill": "^0.0.3"
   }
 }
