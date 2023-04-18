@@ -55,3 +55,5 @@ export async function sendEventToRelay(event, relay) {
     relay.close()
   }, 500)
 }
+
+export { signEvent }
