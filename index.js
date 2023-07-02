@@ -6,7 +6,13 @@ import {
   relayInit
 } from 'nostr-tools'
 
-// Function to create an event
+/**
+  * Creates an event object.
+  * @param {string} kind - The kind of the event.
+  * @param {string} url - The URL associated with the event.
+  * @param {string} privateKey - The private key used to sign the event.
+  * @returns {object} The created event object.
+  */
 export function createEvent(kind, url, privateKey) {
   const event = {
     kind: kind,
@@ -21,13 +27,22 @@ export function createEvent(kind, url, privateKey) {
   return event
 }
 
-// Function to initialize the relay
+/**
+ * Initializes the relay.
+ * @param {string} url - The URL of the relay.
+ * @returns {object} The initialized relay object.
+ */
 export function initializeRelay(url) {
   const relay = relayInit(url)
   return relay
 }
 
-// Function to send an event to the relay
+/**
+ * Sends an event to the relay.
+ * @param {object} event - The event object to send.
+ * @param {object} relay - The relay object.
+ * @returns {Promise<void>} A promise that resolves when the event is sent.
+ */
 export async function sendEventToRelay(event, relay) {
   relay.on('connect', () => {
     console.log(`connected to ${relay.url}`)
