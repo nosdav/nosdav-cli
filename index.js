@@ -1,16 +1,14 @@
 import 'websocket-polyfill'
 import {
-  validateEvent,
-  verifySignature,
   signEvent,
   getEventHash,
   getPublicKey,
-  relayInit,
-  generatePrivateKey
+  relayInit
 } from 'nostr-tools'
 
+// Function to create an event
 export function createEvent(kind, url, privateKey) {
-  let event = {
+  const event = {
     kind: kind,
     created_at: Math.floor(Date.now() / 1000),
     tags: [['u', url]],
@@ -23,11 +21,13 @@ export function createEvent(kind, url, privateKey) {
   return event
 }
 
+// Function to initialize the relay
 export function initializeRelay(url) {
   const relay = relayInit(url)
   return relay
 }
 
+// Function to send an event to the relay
 export async function sendEventToRelay(event, relay) {
   relay.on('connect', () => {
     console.log(`connected to ${relay.url}`)
@@ -42,7 +42,7 @@ export async function sendEventToRelay(event, relay) {
 
   console.log('publishing')
 
-  let pub = relay.publish(event)
+  const pub = relay.publish(event)
 
   pub.on('ok', () => {
     console.log(`${relay.url} has accepted our event`)
